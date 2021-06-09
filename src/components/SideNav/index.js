@@ -169,18 +169,18 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://uniswap.org/docs/v2" target="_blank">
+              <Link href="https://github.com/hub-dao" target="_blank">
+                Github
+              </Link>
+            </HeaderText>
+            <HeaderText>
+              <Link href="https://app.gitbook.com/@hubdao/teams" target="_blank">
                 Docs
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://discord.com/invite/FCfyBSbCU5" target="_blank">
-                Discord
-              </Link>
-            </HeaderText>
-            <HeaderText>
-              <Link href="https://twitter.com/UniswapProtocol" target="_blank">
-                Twitter
+              <Link href="https://hub-dao.medium.com/" target="_blank">
+                Blog
               </Link>
             </HeaderText>
             <Toggle isActive={isDark} toggle={toggleDarkMode} />
