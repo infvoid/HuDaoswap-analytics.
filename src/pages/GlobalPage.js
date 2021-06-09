@@ -73,7 +73,7 @@ function GlobalPage() {
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
-            <TYPE.largeHeader>{below800 ? 'Hubswap Analytics' : 'Hubswap Analytics'}</TYPE.largeHeader>
+            <TYPE.largeHeader>{below800 ? 'Hub Dao Analytics' : 'Hub Dao Analytics'}</TYPE.largeHeader>
             <Search />
             <GlobalStats />
           </AutoColumn>

@@ -430,10 +430,10 @@ export const Search = ({ small = false }) => {
               : below410
               ? 'Search...'
               : below470
-              ? 'Search HubDaoSwap...'
+              ? 'Search HubDao...'
               : below700
               ? 'Search pairs and tokens...'
-              : 'Search HubDaoSwap pairs and tokens...'
+              : 'Search HubDao pairs and tokens...'
           }
           value={value}
           onChange={(e) => {
