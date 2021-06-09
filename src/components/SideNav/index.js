@@ -169,18 +169,18 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://github.com/hub-dao" target="_blank">
-                Github
-              </Link>
-            </HeaderText>
-            <HeaderText>
               <Link href="https://app.gitbook.com/@hubdao/teams" target="_blank">
                 Docs
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://hub-dao.medium.com/" target="_blank">
-                Blog
+              <Link href="https://twitter.com/hub_dao" target="_blank">
+                Twitter
+              </Link>
+            </HeaderText>
+            <HeaderText>
+              <Link href="https://t.me/hub_DAO_Community" target="_blank">
+                Telegram
               </Link>
             </HeaderText>
             <Toggle isActive={isDark} toggle={toggleDarkMode} />
