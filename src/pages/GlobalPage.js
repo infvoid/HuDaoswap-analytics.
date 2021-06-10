@@ -25,6 +25,7 @@ import { CustomLink } from '../components/Link'
 import { PageWrapper, ContentWrapper } from '../components'
 import CheckBox from '../components/Checkbox'
 import QuestionHelper from '../components/QuestionHelper'
+import { useDarkModeManager } from '../contexts/LocalStorage'
 
 const ListOptions = styled(AutoRow)`
   height: 40px;
@@ -66,10 +67,11 @@ function GlobalPage() {
 
   // for tracked data on pairs
   const [useTracked, setUseTracked] = useState(true)
+  const [darkMode] = useDarkModeManager()
 
   return (
     <PageWrapper>
-      <ThemedBackground backgroundColor={transparentize(0.6, '#ff007a')} />
+      <ThemedBackground backgroundColor={darkMode ? transparentize(0.6, '#4e2922') : ''} />
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>

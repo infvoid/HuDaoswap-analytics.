@@ -13,9 +13,8 @@ export default function ThemeProvider({ children }) {
 const theme = (darkMode, color) => ({
   customColor: color,
   textColor: darkMode ? color : 'black',
-
   panelColor: darkMode ? 'rgba(255, 255, 255, 0)' : 'rgba(255, 255, 255, 0)',
-  backgroundColor: darkMode ? '#212429' : '#F7F8FA',
+  backgroundColor: darkMode ? '#4e2922' : '#4e2922',
 
   uniswapPink: darkMode ? '#ff007a' : 'black',
 
@@ -138,17 +137,12 @@ export const Link = styled.a.attrs({
 export const ThemedBackground = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
   pointer-events: none;
-  max-width: 100vw !important;
+  width: 100%;
   height: 200vh;
   mix-blend-mode: color;
-  background: ${({ backgroundColor }) =>
-    `radial-gradient(50% 50% at 50% 50%, ${backgroundColor} 0%, rgba(255, 255, 255, 0) 100%)`};
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  /* background-image: radial-gradient(50% 50% at 50% 50%, #4e2922 0%, #2d2b28 100%); */
+  background: ${({ backgroundColor }) => `radial-gradient(50% 50% at 50% 50%, ${backgroundColor} 0%, #2d2b28 100%)`};
   /* z-index: ; */
 
   transform: translateY(-110vh);
