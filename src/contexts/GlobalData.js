@@ -268,8 +268,9 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     const oneWeekData = oneWeekResult.data.uniswapFactories[0]
 
+    let startBlock = 5243000
     let twoWeekResult = await client.query({
-      query: GLOBAL_DATA(twoWeekBlock?.number),
+      query: GLOBAL_DATA(Math.max(twoWeekBlock?.number, startBlock)),
       fetchPolicy: 'cache-first',
     })
     const twoWeekData = twoWeekResult.data.uniswapFactories[0]
