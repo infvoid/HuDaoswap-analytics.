@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 import { TrendingUp, List, PieChart, Disc } from 'react-feather'
 import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
+// import { useDarkModeManager, useLanguageManager } from '../../contexts/LocalStorage'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
 import Language from '../Language'
@@ -106,8 +107,13 @@ function SideNav({ history }) {
   const below1180 = useMedia('(max-width: 1180px)')
 
   const seconds = useSessionStart()
-
+  /**
+   * isDark 是否是黑夜模式
+   * toggleDarkMode 切换白/黑夜模式
+   */
   const [isDark, toggleDarkMode] = useDarkModeManager()
+  // const [selectedLanguage, setSelectedLanguage] = useLanguageManager()
+  // console.log(isDark)
 
   return (
     <Wrapper isMobile={below1080}>

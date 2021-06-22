@@ -12,6 +12,8 @@ const SAVED_PAIRS = 'SAVED_PAIRS'
 
 const DARK_MODE = 'DARK_MODE'
 
+const LANG = 'LANG'
+
 const UPDATABLE_KEYS = [DARK_MODE, DISMISSED_PATHS, SAVED_ACCOUNTS, SAVED_PAIRS, SAVED_TOKENS]
 
 const UPDATE_KEY = 'UPDATE_KEY'
@@ -49,6 +51,8 @@ function init() {
     [SAVED_ACCOUNTS]: [],
     [SAVED_TOKENS]: {},
     [SAVED_PAIRS]: {},
+
+    [LANG]: 'EN',
   }
 
   try {
@@ -98,6 +102,18 @@ export function useDarkModeManager() {
     [updateKey, isDarkMode]
   )
   return [isDarkMode, toggleDarkMode]
+}
+
+export function useLanguageManager() {
+  // const [state, { updateKey }] = useLocalStorageContext()
+  // let lang = state[LANG]
+  /* const toggleDarkMode = useCallback(
+    (value) => {
+      updateKey(DARK_MODE, value === false || value === true ? value : !isDarkMode)
+    },
+    [updateKey, isDarkMode]
+  ) */
+  // return [isDarkMode, toggleDarkMode]
 }
 
 export function usePathDismissed(path) {

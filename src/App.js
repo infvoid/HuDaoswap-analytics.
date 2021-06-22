@@ -96,53 +96,6 @@ const LayoutWrapper = ({ children, savedOpen, setSavedOpen }) => {
 const BLOCK_DIFFERENCE_THRESHOLD = 30
 
 function App() {
-  // -----------------语言--------------------
-  // const [selectedLanguage, setSelectedLanguage] = useState()
-  // const [translatedLanguage, setTranslatedLanguage] = useState()
-  // const [translations, setTranslations] = useState()
-  // console.log(setSelectedLanguage('a'))
-  // console.log(selectedLanguage)
-
-  /* const getStoredLang = (storedLangCode) => {
-    return allLanguages.filter((language) => {
-      return language.code === storedLangCode
-    })[0]
-  }
-
-  useEffect(() => {
-    const storedLangCode = localStorage.getItem(CACHE_KEY)
-    if (storedLangCode) {
-      const storedLang = getStoredLang(storedLangCode)
-      setSelectedLanguage(storedLang)
-    } else {
-      setSelectedLanguage(EN)
-    }
-  }, [])
-
-  const fetchTranslationsForSelectedLanguage = async () => {
-    // console.log('切换语言')
-    // 临时
-    // setTranslations(['error'])
-    setTranslations(selectedLanguage.src)
-  }
-
-  useEffect(() => {
-    if (selectedLanguage) {
-      // console.log('selectedLanguage=>%s',selectedLanguage)
-      // console.log(selectedLanguage)
-      fetchTranslationsForSelectedLanguage()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLanguage])
-
-  const handleLanguageSelect = (langObject) => {
-    // console.log(langObject)
-    // 用户选择之后设置了语言
-    setSelectedLanguage(langObject)
-    // 并且放入了本地缓存来进行加载
-    localStorage.setItem(CACHE_KEY, langObject.code)
-  } */
-  // ----------------------------------------
   const [savedOpen, setSavedOpen] = useState(false)
 
   const globalData = useGlobalData()
