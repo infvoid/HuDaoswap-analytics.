@@ -38,7 +38,7 @@ export default function Warning({ type, show, setShow, address }) {
   const textContent = below800 ? (
     <div>
       <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'}>
-        Anyone can create and name any HRC20 token on Hecoereum, including creating fake versions of existing tokens and
+        Anyone can create and name any HRC20 token on HECO, including creating fake versions of existing tokens and
         tokens that claim to represent projects that do not have a token.
       </Text>
       <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'}>
@@ -48,10 +48,10 @@ export default function Warning({ type, show, setShow, address }) {
     </div>
   ) : (
     <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'}>
-      Anyone can create and name any HRC20 token on Hecoereum, including creating fake versions of existing tokens and
-      tokens that claim to represent projects that do not have a token. Similar to Hecoinfo, this site automatically
-      tracks analytics for all HRC20 tokens independent of token integrity. Please do your own research before
-      interacting with any HRC20 token.
+      Anyone can create and name any HRC20 token on HECO, including creating fake versions of existing tokens and tokens
+      that claim to represent projects that do not have a token. Similar to Hecoinfo, this site automatically tracks
+      analytics for all HRC20 tokens independent of token integrity. Please do your own research before interacting with
+      any HRC20 token.
     </Text>
   )
 

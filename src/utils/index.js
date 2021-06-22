@@ -42,14 +42,14 @@ export function getPoolLink(token0Address, token1Address = null, remove = false)
     return (
       `https://app.hubdao.io/#/` +
       (remove ? `remove` : `add`) +
-      `/v2/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${'ETH'}`
+      `/v2/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'HT' : token0Address}/${'HT'}`
     )
   } else {
     return (
       `https://app.hubdao.io/#/` +
       (remove ? `remove` : `add`) +
-      `/v2/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address}/${
-        token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address
+      `/v2/${token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'HT' : token0Address}/${
+        token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'HT' : token1Address
       }`
     )
   }
@@ -60,13 +60,13 @@ export function getSwapLink(token0Address, token1Address = null) {
     return `https://app.hubdao.io/#/swap?inputCurrency=${token0Address}`
   } else {
     return `https://app.hubdao.io/#/swap?inputCurrency=${
-      token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token0Address
-    }&outputCurrency=${token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'ETH' : token1Address}`
+      token0Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'HT' : token0Address
+    }&outputCurrency=${token1Address === '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' ? 'HT' : token1Address}`
   }
 }
 
 export function getMiningPoolLink(token0Address) {
-  return `https://app.hubdao.io/#/uni/ETH/${token0Address}`
+  return `https://app.hubdao.io/#/uni/HT/${token0Address}`
 }
 
 export function getUniswapAppLink(linkVariable) {
@@ -75,7 +75,7 @@ export function getUniswapAppLink(linkVariable) {
     return baseUniswapUrl
   }
 
-  return `${baseUniswapUrl}/ETH/${linkVariable}`
+  return `${baseUniswapUrl}/HT/${linkVariable}`
 }
 
 export function localNumber(val) {
