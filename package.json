@@ -88,5 +88,9 @@
       "last 1 safari version"
     ]
   },
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "i18next": "^20.3.2",
+    "react-i18next": "^11.11.0"
+  }
 }
