@@ -81,5 +81,9 @@
   "Token Information": "토큰 정보",
   "Price Change (24hrs)": "24시간 가격 변동",
   "Korean": "한국어",
-  "English": "영어"
+  "English": "영어",
+  "Search": "검색",
+  "Search HubDao": "HubDao 검색하기",
+  "Search pairs and tokens": "거래 페어 및 토큰 검색",
+  "Search HubDao pairs and tokens": "HubDao 거래페어 및 토큰 검색하기"
 }

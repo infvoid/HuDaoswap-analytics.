@@ -155,9 +155,13 @@ function GlobalPage() {
                 <CheckBox
                   checked={useTracked}
                   setChecked={() => setUseTracked(!useTracked)}
-                  text={'Hide untracked pairs'}
+                  text={TranslateString('Hide untracked pairs')}
                 />
-                <QuestionHelper text="USD amounts may be inaccurate in low liquiidty pairs or pairs without HT or stablecoins." />
+                <QuestionHelper
+                  text={TranslateString(
+                    'USD amounts may be inaccurate in low liquiidty pairs or pairs without HT or stablecoins.'
+                  )}
+                />
                 <CustomLink to={'/pairs'}>{TranslateString('See All')}</CustomLink>
               </AutoRow>
             </RowBetween>

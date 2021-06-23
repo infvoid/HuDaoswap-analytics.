@@ -43,7 +43,7 @@ export default function GlobalStats() {
 
           {!below1180 && (
             <TYPE.main mr={'1rem'}>
-              {TranslateString('Transactions (24H)')}: <Medium>{localNumber(oneDayTxns)}</Medium>
+              {TranslateString('Transactions')} (24H): <Medium>{localNumber(oneDayTxns)}</Medium>
             </TYPE.main>
           )}
           {!below1024 && (

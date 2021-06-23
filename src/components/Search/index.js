@@ -430,12 +430,12 @@ export const Search = ({ small = false }) => {
             small
               ? ''
               : below410
-              ? 'Search...'
+              ? TranslateString('Search') + '...'
               : below470
-              ? 'Search HubDao...'
+              ? TranslateString('Search HubDao') + '...'
               : below700
-              ? 'Search pairs and tokens...'
-              : 'Search HubDao pairs and tokens...'
+              ? TranslateString('Search pairs and tokens') + '...'
+              : TranslateString('Search HubDao pairs and tokens') + '...'
           }
           value={value}
           onChange={(e) => {
