@@ -15,6 +15,7 @@ import LocalLoader from '../LocalLoader'
 import { AutoColumn } from '../Column'
 import { Activity } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
+import useI18n from '../../hooks/useI18n'
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -50,6 +51,7 @@ const TokenChart = ({ address, color, base }) => {
   const [darkMode] = useDarkModeManager()
   const textColor = darkMode ? 'white' : 'black'
 
+  const TranslateString = useI18n()
   // reset view on new address
   const addressPrev = usePrevious(address)
   useEffect(() => {
@@ -153,14 +155,14 @@ const TokenChart = ({ address, color, base }) => {
                 onClick={() => setChartFilter(CHART_VIEW.LIQUIDITY)}
                 style={{ marginRight: '6px' }}
               >
-                Liquidity
+                {TranslateString('Liquidity')}
               </OptionButton>
               <OptionButton
                 active={chartFilter === CHART_VIEW.VOLUME}
                 onClick={() => setChartFilter(CHART_VIEW.VOLUME)}
                 style={{ marginRight: '6px' }}
               >
-                Volume
+                {TranslateString('Volume')}
               </OptionButton>
               <OptionButton
                 active={chartFilter === CHART_VIEW.PRICE}
@@ -168,7 +170,7 @@ const TokenChart = ({ address, color, base }) => {
                   setChartFilter(CHART_VIEW.PRICE)
                 }}
               >
-                Price
+                {TranslateString('Price')}
               </OptionButton>
             </RowFixed>
             {chartFilter === CHART_VIEW.PRICE && (
@@ -214,7 +216,7 @@ const TokenChart = ({ address, color, base }) => {
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              {TranslateString('All')}
             </OptionButton>
           </AutoRow>
         </RowBetween>

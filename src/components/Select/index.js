@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { default as ReactSelect } from 'react-select'
 import { isMobile } from 'react-device-detect'
+import useI18n from '../../hooks/useI18n'
 
 import Popout from './popout'
 
@@ -64,6 +65,8 @@ function customFilter(option, searchText) {
 }
 
 const Select = ({ options, onChange, setCapEth, capEth, tokenSelect = false, placeholder, ...rest }) => {
+  const TranslateString = useI18n()
+
   return tokenSelect ? (
     <ReactSelect
       placeholder={placeholder}
@@ -98,7 +101,7 @@ const Select = ({ options, onChange, setCapEth, capEth, tokenSelect = false, pla
                     setCapEth(!capEth)
                   }}
                 />
-                Hide Low Liquidity
+                {TranslateString('Hide Low Liquidity')}
               </FixedToggle>
               {children}
             </CustomMenu>

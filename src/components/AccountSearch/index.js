@@ -12,6 +12,7 @@ import { Hover, StyledIcon } from '..'
 import Panel from '../Panel'
 import { Divider } from '..'
 import { Flex } from 'rebass'
+import useI18n from '../../hooks/useI18n'
 
 import { X } from 'react-feather'
 
@@ -85,6 +86,7 @@ function AccountSearch({ history, small }) {
       }
     }
   }
+  const TranslateString = useI18n()
 
   return (
     <AutoColumn gap={'1rem'}>
@@ -99,7 +101,7 @@ function AccountSearch({ history, small }) {
                 }}
               />
             </Wrapper>
-            <ButtonLight onClick={handleAccountSearch}>Load Account Details</ButtonLight>
+            <ButtonLight onClick={handleAccountSearch}>{TranslateString('Load Account Details')}</ButtonLight>
           </AutoRow>
         </>
       )}
@@ -108,7 +110,7 @@ function AccountSearch({ history, small }) {
         {!small && (
           <Panel>
             <DashGrid center={true} style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
-              <TYPE.main area="account">Saved Accounts</TYPE.main>
+              <TYPE.main area="account">{TranslateString('Saved Accounts')}</TYPE.main>
             </DashGrid>
             <Divider />
             {savedAccounts?.length > 0 ? (
@@ -136,7 +138,7 @@ function AccountSearch({ history, small }) {
                 )
               })
             ) : (
-              <TYPE.light style={{ marginTop: '1rem' }}>No saved accounts</TYPE.light>
+              <TYPE.light style={{ marginTop: '1rem' }}>{TranslateString('No saved accounts')}</TYPE.light>
             )}
           </Panel>
         )}
@@ -164,7 +166,7 @@ function AccountSearch({ history, small }) {
                 )
               })
             ) : (
-              <TYPE.light>No pinned wallets</TYPE.light>
+              <TYPE.light>{TranslateString('No pinned wallets')}</TYPE.light>
             )}
           </>
         )}

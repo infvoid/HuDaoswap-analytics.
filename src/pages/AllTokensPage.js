@@ -11,6 +11,7 @@ import Search from '../components/Search'
 import { useMedia } from 'react-use'
 // import CheckBox from '../components/Checkbox'
 // import QuestionHelper from '../components/QuestionHelper'
+import useI18n from '../hooks/useI18n'
 
 function AllTokensPage() {
   const allTokens = useAllTokenData()
@@ -20,6 +21,7 @@ function AllTokensPage() {
   }, [])
 
   const below600 = useMedia('(max-width: 800px)')
+  const TranslateString = useI18n()
 
   // const [useTracked, setUseTracked] = useState(true)
 
@@ -27,7 +29,7 @@ function AllTokensPage() {
     <PageWrapper>
       <FullWrapper>
         <RowBetween>
-          <TYPE.largeHeader>Top Tokens</TYPE.largeHeader>
+          <TYPE.largeHeader>{TranslateString('Top Tokens')}</TYPE.largeHeader>
           {!below600 && <Search small={true} />}
         </RowBetween>
         {/* <AutoRow gap="4px">

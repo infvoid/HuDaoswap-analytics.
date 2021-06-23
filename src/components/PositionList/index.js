@@ -16,6 +16,7 @@ import { RowFixed } from '../Row'
 import { ButtonLight } from '../ButtonStyled'
 import { TYPE } from '../../Theme'
 import FormattedName from '../FormattedName'
+import useI18n from '../../hooks/useI18n'
 
 dayjs.extend(utc)
 
@@ -56,7 +57,7 @@ const DashGrid = styled.div`
     :first-child {
       justify-content: flex-start;
       text-align: left;
-      width: 20px;
+      /* width: 20px; */
     }
   }
 
@@ -119,6 +120,7 @@ function PositionList({ positions }) {
   // sorting
   const [sortDirection, setSortDirection] = useState(true)
   const [sortedColumn, setSortedColumn] = useState(SORT_FIELD.VALUE)
+  const TranslateString = useI18n()
 
   useEffect(() => {
     setMaxPage(1) // edit this to do modular
@@ -164,11 +166,13 @@ function PositionList({ positions }) {
                 href={getPoolLink(position.pair.token0.id, position.pair.token1.id)}
                 style={{ marginRight: '.5rem' }}
               >
-                <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Add</ButtonLight>
+                <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>{TranslateString('Add')}</ButtonLight>
               </Link>
               {poolOwnership > 0 && (
                 <Link external href={getPoolLink(position.pair.token0.id, position.pair.token1.id, true)}>
-                  <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>Remove</ButtonLight>
+                  <ButtonLight style={{ padding: '4px 6px', borderRadius: '4px' }}>
+                    {TranslateString('Remove')}
+                  </ButtonLight>
                 </Link>
               )}
             </RowFixed>
@@ -292,7 +296,7 @@ function PositionList({ positions }) {
           </Flex>
         )}
         <Flex alignItems="flex-start" justifyContent="flex-start">
-          <TYPE.main area="number">Name</TYPE.main>
+          <TYPE.main area="number">{TranslateString('Name')}</TYPE.main>
         </Flex>
         <Flex alignItems="center" justifyContent="flexEnd">
           <ClickableText

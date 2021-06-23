@@ -10,10 +10,10 @@ import { withRouter } from 'react-router-dom'
 import { TrendingUp, List, PieChart, Disc } from 'react-feather'
 import Link from '../Link'
 import { useSessionStart } from '../../contexts/Application'
-// import { useDarkModeManager, useLanguageManager } from '../../contexts/LocalStorage'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
+import { useDarkModeManager, useLanguage } from '../../contexts/LocalStorage'
 import Toggle from '../Toggle'
 import Language from '../Language'
+import useI18n from '../../hooks/useI18n'
 
 const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
@@ -112,8 +112,9 @@ function SideNav({ history }) {
    * toggleDarkMode 切换白/黑夜模式
    */
   const [isDark, toggleDarkMode] = useDarkModeManager()
-  // const [selectedLanguage, setSelectedLanguage] = useLanguageManager()
+  const [selectedLanguage, setSelectedLanguage] = useLanguage()
   // console.log(isDark)
+  const TranslateString = useI18n()
 
   return (
     <Wrapper isMobile={below1080}>
@@ -126,7 +127,7 @@ function SideNav({ history }) {
                 <BasicLink to="/home">
                   <Option activeText={history.location.pathname === '/home' ?? undefined}>
                     <TrendingUp size={20} style={{ marginRight: '.75rem' }} />
-                    Overview
+                    {TranslateString('Overview')}
                   </Option>
                 </BasicLink>
                 <BasicLink to="/tokens">
@@ -138,7 +139,7 @@ function SideNav({ history }) {
                     }
                   >
                     <Disc size={20} style={{ marginRight: '.75rem' }} />
-                    Tokens
+                    {TranslateString('Tokens')}
                   </Option>
                 </BasicLink>
                 <BasicLink to="/pairs">
@@ -150,7 +151,7 @@ function SideNav({ history }) {
                     }
                   >
                     <PieChart size={20} style={{ marginRight: '.75rem' }} />
-                    Pairs
+                    {TranslateString('Pairs')}
                   </Option>
                 </BasicLink>
 
@@ -163,7 +164,7 @@ function SideNav({ history }) {
                     }
                   >
                     <List size={20} style={{ marginRight: '.75rem' }} />
-                    Accounts
+                    {TranslateString('Accounts')}
                   </Option>
                 </BasicLink>
               </AutoColumn>
@@ -171,12 +172,17 @@ function SideNav({ history }) {
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
+              <Link href="https://app.hubdao.io" target="_blank">
+                App.HubDao.io
+              </Link>
+            </HeaderText>
+            <HeaderText>
               <Link href="https://hubdao.io" target="_blank">
                 HubDao.io
               </Link>
             </HeaderText>
             <HeaderText>
-              <Link href="https://app.gitbook.com/@hubdao/teams" target="_blank">
+              <Link href="https://docs.hubdao.io/" target="_blank">
                 Docs
               </Link>
             </HeaderText>
@@ -191,14 +197,14 @@ function SideNav({ history }) {
               </Link>
             </HeaderText>
             <Toggle isActive={isDark} toggle={toggleDarkMode} />
-            <Language></Language>
+            <Language Language={selectedLanguage} setLanguage={setSelectedLanguage}></Language>
           </AutoColumn>
           {!below1180 && (
             <Polling style={{ marginLeft: '.5rem' }}>
               <PollingDot />
               <a href="/" style={{ color: 'white' }}>
                 <TYPE.small color={'white'}>
-                  Updated {!!seconds ? seconds + 's' : '-'} ago <br />
+                  {TranslateString('Updated')} {!!seconds ? seconds + 's' : '-'} {TranslateString('ago')} <br />
                 </TYPE.small>
               </a>
             </Polling>

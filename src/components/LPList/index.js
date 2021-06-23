@@ -13,6 +13,7 @@ import { formattedNum } from '../../utils'
 import { TYPE } from '../../Theme'
 import DoubleTokenLogo from '../DoubleLogo'
 import { RowFixed } from '../Row'
+import useI18n from '../../hooks/useI18n'
 
 dayjs.extend(utc)
 
@@ -142,6 +143,7 @@ function LPList({ lps, disbaleLinks, maxItems = 10 }) {
         </div>
       )
     })
+  const TranslateString = useI18n()
 
   return (
     <ListWrapper>
@@ -152,7 +154,7 @@ function LPList({ lps, disbaleLinks, maxItems = 10 }) {
           </Flex>
         )}
         <Flex alignItems="center" justifyContent="flex-start">
-          <TYPE.main area="name">Account</TYPE.main>
+          <TYPE.main area="name">{TranslateString('Account')}</TYPE.main>
         </Flex>
         {/* {!below1080 && (
           <Flex alignItems="center" justifyContent="flexEnd">
@@ -160,10 +162,10 @@ function LPList({ lps, disbaleLinks, maxItems = 10 }) {
           </Flex>
         )} */}
         <Flex alignItems="center" justifyContent="flexEnd">
-          <TYPE.main area="pair">Pair</TYPE.main>
+          <TYPE.main area="pair">{TranslateString('Pair')}</TYPE.main>
         </Flex>
         <Flex alignItems="center" justifyContent="flexEnd">
-          <TYPE.main area="value">Value</TYPE.main>
+          <TYPE.main area="value">{TranslateString('Value')}</TYPE.main>
         </Flex>
       </DashGrid>
       <Divider />

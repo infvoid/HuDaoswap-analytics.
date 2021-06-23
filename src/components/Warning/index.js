@@ -9,6 +9,7 @@ import { AutoColumn } from '../Column'
 import { Hover } from '..'
 import Link from '../Link'
 import { useMedia } from 'react-use'
+import useI18n from '../../hooks/useI18n'
 
 const WarningWrapper = styled.div`
   border-radius: 20px;
@@ -34,24 +35,26 @@ const StyledWarningIcon = styled(AlertTriangle)`
 
 export default function Warning({ type, show, setShow, address }) {
   const below800 = useMedia('(max-width: 800px)')
+  const TranslateString = useI18n()
 
   const textContent = below800 ? (
     <div>
       <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'}>
-        Anyone can create and name any HRC20 token on HECO, including creating fake versions of existing tokens and
-        tokens that claim to represent projects that do not have a token.
+        {TranslateString(
+          'Anyone can create and name any HRC20 token on HECO, including creating fake versions of existing tokens and tokens that claim to represent projects that do not have a token.'
+        )}
       </Text>
       <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'}>
-        Similar to Hecoinfo, this site automatically tracks analytics for all HRC20 tokens independent of token
-        integrity. Please do your own research before interacting with any HRC20 token.
+        {TranslateString(
+          'Similar to Hecoinfo, this site automatically tracks analytics for all HRC20 tokens independent of token integrity. Please do your own research before interacting with any HRC20 token.'
+        )}
       </Text>
     </div>
   ) : (
     <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'}>
-      Anyone can create and name any HRC20 token on HECO, including creating fake versions of existing tokens and tokens
-      that claim to represent projects that do not have a token. Similar to Hecoinfo, this site automatically tracks
-      analytics for all HRC20 tokens independent of token integrity. Please do your own research before interacting with
-      any HRC20 token.
+      {TranslateString(
+        'Anyone can create and name any HRC20 token on HECO, including creating fake versions of existing tokens and tokens that claim to represent projects that do not have a token. Similar to Hecoinfo, this site automatically tracks analytics for all HRC20 tokens independent of token integrity. Please do your own research before interacting with any HRC20 token.'
+      )}
     </Text>
   )
 
@@ -61,7 +64,7 @@ export default function Warning({ type, show, setShow, address }) {
         <RowFixed>
           <StyledWarningIcon />
           <Text fontWeight={600} lineHeight={'145.23%'} ml={'10px'}>
-            Token Safety Alert
+            {TranslateString('Token Safety Alert')}
           </Text>
         </RowFixed>
         {textContent}
@@ -75,13 +78,15 @@ export default function Warning({ type, show, setShow, address }) {
                 href={'https://hecoinfo.com/address/' + address}
                 target="_blank"
               >
-                View {type === 'token' ? 'token' : 'pair'} contract on Hecoinfo
+                {type === 'token'
+                  ? TranslateString('View token contract on Hecoinfo')
+                  : TranslateString('View pair contract on Hecoinfo')}
               </Link>
             </Hover>
             <RowBetween style={{ marginTop: '20px' }}>
               <div />
               <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
-                I understand
+                {TranslateString('I understand')}
               </ButtonDark>
             </RowBetween>
           </div>
@@ -95,11 +100,13 @@ export default function Warning({ type, show, setShow, address }) {
                 href={'https://hecoinfo.com/address/' + address}
                 target="_blank"
               >
-                View {type === 'token' ? 'token' : 'pair'} contract on Hecoinfo
+                {type === 'token'
+                  ? TranslateString('View token contract on Hecoinfo')
+                  : TranslateString('View pair contract on Hecoinfo')}
               </Link>
             </Hover>
             <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
-              I understand
+              {TranslateString('I understand')}
             </ButtonDark>
           </RowBetween>
         )}

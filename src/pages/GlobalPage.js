@@ -11,6 +11,7 @@ import TxnList from '../components/TxnList'
 import GlobalChart from '../components/GlobalChart'
 import Search from '../components/Search'
 import GlobalStats from '../components/GlobalStats'
+import useI18n from '../hooks/useI18n'
 
 import { useGlobalData, useGlobalTransactions } from '../contexts/GlobalData'
 import { useAllPairData } from '../contexts/PairData'
@@ -48,6 +49,8 @@ const GridRow = styled.div`
 `
 
 function GlobalPage() {
+  const TranslateString = useI18n()
+
   // get data for lists and totals
   const allPairs = useAllPairData()
   const allTokens = useAllTokenData()
@@ -75,7 +78,7 @@ function GlobalPage() {
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
-            <TYPE.largeHeader>{below800 ? 'Hub Dao Analytics' : 'Hub Dao Analytics'}</TYPE.largeHeader>
+            <TYPE.largeHeader>{TranslateString('Hub Dao Analytics')}</TYPE.largeHeader>
             <Search />
             <GlobalStats />
           </AutoColumn>
@@ -86,7 +89,7 @@ function GlobalPage() {
                   <AutoColumn gap="36px">
                     <AutoColumn gap="20px">
                       <RowBetween>
-                        <TYPE.main>Volume (24hrs)</TYPE.main>
+                        <TYPE.main>{TranslateString('Volume (24hrs)')}</TYPE.main>
                         <div />
                       </RowBetween>
                       <RowBetween align="flex-end">
@@ -98,7 +101,7 @@ function GlobalPage() {
                     </AutoColumn>
                     <AutoColumn gap="20px">
                       <RowBetween>
-                        <TYPE.main>Total Liquidity</TYPE.main>
+                        <TYPE.main>{TranslateString('Total Liquidity')}</TYPE.main>
                         <div />
                       </RowBetween>
                       <RowBetween align="flex-end">
@@ -135,9 +138,9 @@ function GlobalPage() {
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
               <TYPE.main fontSize={'1.125rem'} style={{ whiteSpace: 'nowrap' }}>
-                Top Tokens
+                {TranslateString('Top Tokens')}
               </TYPE.main>
-              <CustomLink to={'/tokens'}>See All</CustomLink>
+              <CustomLink to={'/tokens'}>{TranslateString('See All')}</CustomLink>
             </RowBetween>
           </ListOptions>
           <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
@@ -146,7 +149,7 @@ function GlobalPage() {
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
               <TYPE.main fontSize={'1rem'} style={{ whiteSpace: 'nowrap' }}>
-                Top Pairs
+                {TranslateString('Top Pairs')}
               </TYPE.main>
               <AutoRow gap="4px" width="100%" justifyContent="flex-end">
                 <CheckBox
@@ -155,7 +158,7 @@ function GlobalPage() {
                   text={'Hide untracked pairs'}
                 />
                 <QuestionHelper text="USD amounts may be inaccurate in low liquiidty pairs or pairs without HT or stablecoins." />
-                <CustomLink to={'/pairs'}>See All</CustomLink>
+                <CustomLink to={'/pairs'}>{TranslateString('See All')}</CustomLink>
               </AutoRow>
             </RowBetween>
           </ListOptions>
@@ -164,7 +167,7 @@ function GlobalPage() {
           </Panel>
           <span>
             <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
-              Transactions
+              {TranslateString('Transactions')}
             </TYPE.main>
           </span>
           <Panel style={{ margin: '1rem 0' }}>

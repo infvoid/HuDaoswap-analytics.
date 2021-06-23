@@ -1,10 +1,9 @@
-import { useCallback, useContext } from 'react'
-import { TranslationsContext } from './TranslationsContext'
+import { useCallback } from 'react'
 import { getTranslation } from './translateTextHelpers'
+import { useLanguage } from '../contexts/LocalStorage'
 
 const useI18n = () => {
-  const { translations } = useContext(TranslationsContext)
-
+  const [selectedLanguage] = useLanguage()
   /**
    * As a temporary fix memoize the translation function so it can be used in an effect.
    * It appears the TranslationsContext is always empty and is not currently used
@@ -13,20 +12,19 @@ const useI18n = () => {
   return useCallback(
     /**
      *
-     * @param translationId 语言包的key
      * @param fallback 语言包的value
      * @returns
      */
-    (translationId: number, fallback: string) => {
+    (allback: string) => {
       /* if (translations[0] === 'error') {
         return fallback
       } */
       // if (translations.length > 0) {
-      return getTranslation(translations, translationId, fallback)
+      return getTranslation(selectedLanguage.src, allback)
       /*  }
       return fallback */
     },
-    [translations]
+    [selectedLanguage]
   )
 }
 

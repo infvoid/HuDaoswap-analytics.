@@ -38,6 +38,7 @@ import FormattedName from '../components/FormattedName'
 import { useListedTokens } from '../contexts/Application'
 import HoverText from '../components/HoverText'
 import { UNTRACKED_COPY, PAIR_BLACKLIST, BLOCKED_WARNINGS } from '../constants'
+import useI18n from '../hooks/useI18n'
 
 const DashboardWrapper = styled.div`
   width: 100%;
@@ -194,6 +195,7 @@ function PairPage({ pairAddress, history }) {
   const [savedPairs, addPair] = useSavedPairs()
 
   const listedTokens = useListedTokens()
+  const TranslateString = useI18n()
 
   if (PAIR_BLACKLIST.includes(pairAddress)) {
     return (
@@ -201,11 +203,11 @@ function PairPage({ pairAddress, history }) {
         <BlockedMessageWrapper>
           <AutoColumn gap="1rem" justify="center">
             <TYPE.light style={{ textAlign: 'center' }}>
-              {BLOCKED_WARNINGS[pairAddress] ?? `This pair is not supported.`}
+              {BLOCKED_WARNINGS[pairAddress] ?? TranslateString('This pair is not supported.')}
             </TYPE.light>
-            <Link external={true} href={'https://hecoinfo.com/address/' + pairAddress}>{`More about ${shortenAddress(
-              pairAddress
-            )}`}</Link>
+            <Link external={true} href={'https://hecoinfo.com/address/' + pairAddress}>{`${TranslateString(
+              'More about'
+            )} ${shortenAddress(pairAddress)}`}</Link>
           </AutoColumn>
         </BlockedMessageWrapper>
       </BlockedWrapper>
@@ -225,7 +227,7 @@ function PairPage({ pairAddress, history }) {
       <ContentWrapperLarge>
         <RowBetween>
           <TYPE.body>
-            <BasicLink to="/pairs">{'Pairs '}</BasicLink>→ {token0?.symbol}-{token1?.symbol}
+            <BasicLink to="/pairs">{TranslateString('Pairs')} </BasicLink>→ {token0?.symbol}-{token1?.symbol}
           </TYPE.body>
           {!below600 && <Search small={true} />}
         </RowBetween>
@@ -257,7 +259,7 @@ function PairPage({ pairAddress, history }) {
                           <HoverSpan onClick={() => history.push(`/token/${token1?.id}`)}>
                             {token1.symbol}
                           </HoverSpan>{' '}
-                          Pair
+                          {TranslateString('Pair')}
                         </>
                       ) : (
                         ''
@@ -287,11 +289,11 @@ function PairPage({ pairAddress, history }) {
                   )}
 
                   <Link external href={getPoolLink(token0?.id, token1?.id)}>
-                    <ButtonLight color={backgroundColor}>+ Add Liquidity</ButtonLight>
+                    <ButtonLight color={backgroundColor}>{TranslateString('+ Add Liquidity')}</ButtonLight>
                   </Link>
                   <Link external href={getSwapLink(token0?.id, token1?.id)}>
                     <ButtonDark ml={!below1080 && '.5rem'} mr={below1080 && '.5rem'} color={backgroundColor}>
-                      Trade
+                      {TranslateString('Trade')}
                     </ButtonDark>
                   </Link>
                 </RowFixed>
@@ -335,7 +337,7 @@ function PairPage({ pairAddress, history }) {
               {!below1080 && (
                 <RowFixed>
                   <TYPE.main fontSize={'1.125rem'} mr="6px">
-                    Pair Stats
+                    {TranslateString('Pair Stats')}
                   </TYPE.main>
                   {showUSDWaning ? (
                     <HoverText text={UNTRACKED_COPY}>
@@ -348,7 +350,7 @@ function PairPage({ pairAddress, history }) {
                 <Panel style={{ height: '100%' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Total Liquidity </TYPE.main>
+                      <TYPE.main>{TranslateString('Total Liquidity')} </TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -362,7 +364,7 @@ function PairPage({ pairAddress, history }) {
                 <Panel style={{ height: '100%' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Volume (24hrs) </TYPE.main>
+                      <TYPE.main>{TranslateString('Volume (24hrs)')} </TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -376,7 +378,7 @@ function PairPage({ pairAddress, history }) {
                 <Panel style={{ height: '100%' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Fees (24hrs)</TYPE.main>
+                      <TYPE.main>{TranslateString('Fees (24hrs)')}</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -390,7 +392,7 @@ function PairPage({ pairAddress, history }) {
                 <Panel style={{ height: '100%' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Pooled Tokens</TYPE.main>
+                      <TYPE.main>{TranslateString('Pooled Tokens')}</TYPE.main>
                       <div />
                     </RowBetween>
                     <Hover onClick={() => history.push(`/token/${token0?.id}`)} fade={true}>
@@ -432,7 +434,7 @@ function PairPage({ pairAddress, history }) {
                 </Panel>
               </PanelWrapper>
               <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
-                Transactions
+                {TranslateString('Transactions')}
               </TYPE.main>{' '}
               <Panel
                 style={{
@@ -442,7 +444,7 @@ function PairPage({ pairAddress, history }) {
                 {transactions ? <TxnList transactions={transactions} /> : <Loader />}
               </Panel>
               <RowBetween style={{ marginTop: '3rem' }}>
-                <TYPE.main fontSize={'1.125rem'}>Pair Information</TYPE.main>{' '}
+                <TYPE.main fontSize={'1.125rem'}>{TranslateString('Pair Information')}</TYPE.main>{' '}
               </RowBetween>
               <Panel
                 rounded
@@ -453,7 +455,7 @@ function PairPage({ pairAddress, history }) {
               >
                 <TokenDetailsLayout>
                   <Column>
-                    <TYPE.main>Pair Name</TYPE.main>
+                    <TYPE.main>{TranslateString('Pair Name')}</TYPE.main>
                     <TYPE.main style={{ marginTop: '.5rem' }}>
                       <RowFixed>
                         <FormattedName text={token0?.symbol ?? ''} maxCharacters={8} />
@@ -463,7 +465,7 @@ function PairPage({ pairAddress, history }) {
                     </TYPE.main>
                   </Column>
                   <Column>
-                    <TYPE.main>Pair Address</TYPE.main>
+                    <TYPE.main>{TranslateString('Pair Address')}</TYPE.main>
                     <AutoRow align="flex-end">
                       <TYPE.main style={{ marginTop: '.5rem' }}>
                         {pairAddress.slice(0, 6) + '...' + pairAddress.slice(38, 42)}
@@ -475,7 +477,7 @@ function PairPage({ pairAddress, history }) {
                     <TYPE.main>
                       <RowFixed>
                         <FormattedName text={token0?.symbol ?? ''} maxCharacters={8} />{' '}
-                        <span style={{ marginLeft: '4px' }}>Address</span>
+                        <span style={{ marginLeft: '4px' }}>{TranslateString('Address')}</span>
                       </RowFixed>
                     </TYPE.main>
                     <AutoRow align="flex-end">
@@ -489,7 +491,7 @@ function PairPage({ pairAddress, history }) {
                     <TYPE.main>
                       <RowFixed>
                         <FormattedName text={token1?.symbol ?? ''} maxCharacters={8} />{' '}
-                        <span style={{ marginLeft: '4px' }}>Address</span>
+                        <span style={{ marginLeft: '4px' }}>{TranslateString('Address')}</span>
                       </RowFixed>
                     </TYPE.main>
                     <AutoRow align="flex-end">
@@ -501,7 +503,7 @@ function PairPage({ pairAddress, history }) {
                   </Column>
                   <ButtonLight color={backgroundColor}>
                     <Link color={backgroundColor} external href={'https://hecoinfo.com/address/' + pairAddress}>
-                      View on Hecoinfo ↗
+                      {TranslateString('View on Hecoinfo')} ↗
                     </Link>
                   </ButtonLight>
                 </TokenDetailsLayout>

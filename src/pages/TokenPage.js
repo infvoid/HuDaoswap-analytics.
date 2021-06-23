@@ -35,6 +35,7 @@ import { UNTRACKED_COPY, TOKEN_BLACKLIST, BLOCKED_WARNINGS } from '../constants'
 import QuestionHelper from '../components/QuestionHelper'
 import Checkbox from '../components/Checkbox'
 import { shortenAddress } from '../utils'
+import useI18n from '../hooks/useI18n'
 
 const DashboardWrapper = styled.div`
   width: 100%;
@@ -170,6 +171,7 @@ function TokenPage({ address, history }) {
   }, [])
 
   const [useTracked, setUseTracked] = useState(true)
+  const TranslateString = useI18n()
 
   if (TOKEN_BLACKLIST.includes(address)) {
     return (
@@ -177,11 +179,11 @@ function TokenPage({ address, history }) {
         <BlockedMessageWrapper>
           <AutoColumn gap="1rem" justify="center">
             <TYPE.light style={{ textAlign: 'center' }}>
-              {BLOCKED_WARNINGS[address] ?? `This token is not supported.`}
+              {BLOCKED_WARNINGS[address] ?? TranslateString('This token is not supported.')}
             </TYPE.light>
-            <Link external={true} href={'https://hecoinfo.com/address/' + address}>{`More about ${shortenAddress(
-              address
-            )}`}</Link>
+            <Link external={true} href={'https://hecoinfo.com/address/' + address}>{`${TranslateString(
+              'More about'
+            )} ${shortenAddress(address)}`}</Link>
           </AutoColumn>
         </BlockedMessageWrapper>
       </BlockedWrapper>
@@ -260,11 +262,11 @@ function TokenPage({ address, history }) {
                     <></>
                   )}
                   <Link href={getPoolLink(address)} target="_blank">
-                    <ButtonLight color={backgroundColor}>+ Add Liquidity</ButtonLight>
+                    <ButtonLight color={backgroundColor}>{TranslateString('+ Add Liquidity')}</ButtonLight>
                   </Link>
                   <Link href={getSwapLink(address)} target="_blank">
                     <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={backgroundColor}>
-                      Trade
+                      {TranslateString('Trade')}
                     </ButtonDark>
                   </Link>
                 </RowFixed>
@@ -275,7 +277,7 @@ function TokenPage({ address, history }) {
               {!below1080 && (
                 <RowFixed>
                   <TYPE.main fontSize={'1.125rem'} mr="6px">
-                    Token Stats
+                    {TranslateString('Token Stats')}
                   </TYPE.main>
                   {usingUtVolume && (
                     <HoverText text={UNTRACKED_COPY}>
@@ -305,7 +307,7 @@ function TokenPage({ address, history }) {
                 <Panel>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Total Liquidity</TYPE.main>
+                      <TYPE.main>{TranslateString('Total Liquidity')}</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -319,7 +321,7 @@ function TokenPage({ address, history }) {
                 <Panel>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Volume (24hrs)</TYPE.main>
+                      <TYPE.main>{TranslateString('Volume (24hrs)')}</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -334,7 +336,7 @@ function TokenPage({ address, history }) {
                 <Panel>
                   <AutoColumn gap="20px">
                     <RowBetween>
-                      <TYPE.main>Transactions (24hrs)</TYPE.main>
+                      <TYPE.main>{TranslateString('Transactions (24hrs)')}</TYPE.main>
                       <div />
                     </RowBetween>
                     <RowBetween align="flex-end">
@@ -357,14 +359,18 @@ function TokenPage({ address, history }) {
             </>
 
             <RowBetween style={{ marginTop: '3rem' }}>
-              <TYPE.main fontSize={'1.125rem'}>Top Pairs</TYPE.main>
+              <TYPE.main fontSize={'1.125rem'}>{TranslateString('Top Pairs')}</TYPE.main>
               <AutoRow gap="4px" style={{ width: 'fit-content' }}>
                 <Checkbox
                   checked={useTracked}
                   setChecked={() => setUseTracked(!useTracked)}
-                  text={'Hide untracked pairs'}
+                  text={TranslateString('Hide untracked pairs')}
                 />
-                <QuestionHelper text="USD amounts may be inaccurate in low liquiidty pairs or pairs without HT or stablecoins." />
+                <QuestionHelper
+                  text={TranslateString(
+                    'USD amounts may be inaccurate in low liquiidty pairs or pairs without HT or stablecoins.'
+                  )}
+                />
               </AutoRow>
             </RowBetween>
             <Panel
@@ -381,14 +387,14 @@ function TokenPage({ address, history }) {
               )}
             </Panel>
             <RowBetween mt={40} mb={'1rem'}>
-              <TYPE.main fontSize={'1.125rem'}>Transactions</TYPE.main> <div />
+              <TYPE.main fontSize={'1.125rem'}>{TranslateString('Transactions')}</TYPE.main> <div />
             </RowBetween>
             <Panel rounded>
               {transactions ? <TxnList color={backgroundColor} transactions={transactions} /> : <Loader />}
             </Panel>
             <>
               <RowBetween style={{ marginTop: '3rem' }}>
-                <TYPE.main fontSize={'1.125rem'}>Token Information</TYPE.main>{' '}
+                <TYPE.main fontSize={'1.125rem'}>{TranslateString('Token Information')}</TYPE.main>{' '}
               </RowBetween>
               <Panel
                 rounded
@@ -399,19 +405,19 @@ function TokenPage({ address, history }) {
               >
                 <TokenDetailsLayout>
                   <Column>
-                    <TYPE.main>Symbol</TYPE.main>
+                    <TYPE.main>{TranslateString('Symbol')}</TYPE.main>
                     <Text style={{ marginTop: '.5rem' }} fontSize={24} fontWeight="500">
                       <FormattedName text={symbol} maxCharacters={12} />
                     </Text>
                   </Column>
                   <Column>
-                    <TYPE.main>Name</TYPE.main>
+                    <TYPE.main>{TranslateString('Name')}</TYPE.main>
                     <TYPE.main style={{ marginTop: '.5rem' }} fontSize={24} fontWeight="500">
                       <FormattedName text={name} maxCharacters={16} />
                     </TYPE.main>
                   </Column>
                   <Column>
-                    <TYPE.main>Address</TYPE.main>
+                    <TYPE.main>{TranslateString('Address')}</TYPE.main>
                     <AutoRow align="flex-end">
                       <TYPE.main style={{ marginTop: '.5rem' }} fontSize={24} fontWeight="500">
                         {address.slice(0, 8) + '...' + address.slice(36, 42)}
@@ -421,7 +427,7 @@ function TokenPage({ address, history }) {
                   </Column>
                   <ButtonLight color={backgroundColor}>
                     <Link color={backgroundColor} external href={'https://hecoinfo.com/address/' + address}>
-                      View on Hecoinfo ↗
+                      {TranslateString('View on Hecoinfo')} ↗
                     </Link>
                   </ButtonLight>
                 </TokenDetailsLayout>

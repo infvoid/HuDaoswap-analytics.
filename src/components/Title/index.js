@@ -10,6 +10,7 @@ import Logo from '../../assets/hubdao_logo2.svg'
 
 import { BasicLink } from '../Link'
 import { useMedia } from 'react-use'
+import useI18n from '../../hooks/useI18n'
 
 const TitleWrapper = styled.div`
   text-decoration: none;
@@ -42,6 +43,7 @@ const Option = styled.div`
 export default function Title() {
   const history = useHistory()
   const below1080 = useMedia('(max-width: 1080px)')
+  const TranslateString = useI18n()
 
   return (
     <TitleWrapper onClick={() => history.push('/')}>
@@ -57,7 +59,9 @@ export default function Title() {
         {below1080 && (
           <RowFixed style={{ alignItems: 'flex-end' }}>
             <BasicLink to="/home">
-              <Option activeText={history.location.pathname === '/home' ?? undefined}>Overview</Option>
+              <Option activeText={history.location.pathname === '/home' ?? undefined}>
+                {TranslateString('Overview')}
+              </Option>
             </BasicLink>
             <BasicLink to="/tokens">
               <Option
@@ -67,7 +71,7 @@ export default function Title() {
                   undefined
                 }
               >
-                Tokens
+                {TranslateString('Tokens')}
               </Option>
             </BasicLink>
             <BasicLink to="/pairs">
@@ -78,7 +82,7 @@ export default function Title() {
                   undefined
                 }
               >
-                Pairs
+                {TranslateString('Pairs')}
               </Option>
             </BasicLink>
 
@@ -90,7 +94,7 @@ export default function Title() {
                   undefined
                 }
               >
-                Accounts
+                {TranslateString('Accounts')}
               </Option>
             </BasicLink>
           </RowFixed>

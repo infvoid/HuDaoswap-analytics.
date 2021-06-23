@@ -13,6 +13,7 @@ import { useTimeframe } from '../../contexts/Application'
 import LocalLoader from '../LocalLoader'
 import { useColor } from '../../hooks'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
+import useI18n from '../../hooks/useI18n'
 
 const ChartWrapper = styled.div`
   max-height: 420px;
@@ -44,6 +45,7 @@ const PairReturnsChart = ({ account, position }) => {
   const color = useColor(position?.pair.token0.id)
 
   const [chartView, setChartView] = useState(CHART_VIEW.VALUE)
+  const TranslateString = useI18n()
 
   // based on window, get starttime
   let utcStartTime = getTimeframe(timeWindow)
@@ -65,10 +67,10 @@ const PairReturnsChart = ({ account, position }) => {
         <OptionsRow>
           <AutoRow gap="6px" style={{ flexWrap: 'nowrap' }}>
             <OptionButton active={chartView === CHART_VIEW.VALUE} onClick={() => setChartView(CHART_VIEW.VALUE)}>
-              Liquidity
+              {TranslateString('Liquidity')}
             </OptionButton>
             <OptionButton active={chartView === CHART_VIEW.FEES} onClick={() => setChartView(CHART_VIEW.FEES)}>
-              Fees
+              {TranslateString('Fees')}
             </OptionButton>
           </AutoRow>
           <AutoRow justify="flex-end" gap="6px">

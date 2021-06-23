@@ -14,6 +14,7 @@ import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
+import useI18n from '../../hooks/useI18n'
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -40,6 +41,7 @@ const CHART_VIEW = {
 
 const PairChart = ({ address, color, base0, base1 }) => {
   const [chartFilter, setChartFilter] = useState(CHART_VIEW.LIQUIDITY)
+  const TranslateString = useI18n()
 
   const [timeWindow, setTimeWindow] = useState(timeframeOptions.MONTH)
 
@@ -86,7 +88,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
   if (chartData && chartData.length === 0) {
     return (
       <ChartWrapper>
-        <EmptyCard height="300px">No historical data yet.</EmptyCard>{' '}
+        <EmptyCard height="300px">{TranslateString('No historical data yet.')}</EmptyCard>{' '}
       </ChartWrapper>
     )
   }
@@ -130,7 +132,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
                 setChartFilter(CHART_VIEW.LIQUIDITY)
               }}
             >
-              Liquidity
+              {TranslateString('Liquidity')}
             </OptionButton>
             <OptionButton
               active={chartFilter === CHART_VIEW.VOLUME}
@@ -139,7 +141,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
                 setChartFilter(CHART_VIEW.VOLUME)
               }}
             >
-              Volume
+              {TranslateString('Volume')}
             </OptionButton>
             <OptionButton
               active={chartFilter === CHART_VIEW.RATE0}
@@ -177,7 +179,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              {TranslateString('All')}
             </OptionButton>
           </AutoRow>
         </OptionsRow>

@@ -12,6 +12,7 @@ import { useUserLiquidityChart } from '../../contexts/User'
 import LocalLoader from '../LocalLoader'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { TYPE } from '../../Theme'
+import useI18n from '../../hooks/useI18n'
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -30,6 +31,7 @@ const UserChart = ({ account }) => {
 
   const below600 = useMedia('(max-width: 600px)')
   const above1600 = useMedia('(min-width: 1600px)')
+  const TranslateString = useI18n()
 
   const domain = [(dataMin) => (dataMin > utcStartTime ? dataMin : utcStartTime), 'dataMax']
 
@@ -48,7 +50,7 @@ const UserChart = ({ account }) => {
       ) : (
         <RowBetween mb={40}>
           <AutoRow gap="10px">
-            <TYPE.main>Liquidity Value</TYPE.main>
+            <TYPE.main>{TranslateString('Liquidity Value')}</TYPE.main>
           </AutoRow>
           <AutoRow justify="flex-end" gap="4px">
             <OptionButton
@@ -67,7 +69,7 @@ const UserChart = ({ account }) => {
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              {TranslateString('All')}
             </OptionButton>
           </AutoRow>
         </RowBetween>

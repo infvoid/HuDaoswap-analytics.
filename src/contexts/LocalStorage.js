@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect } from 'react'
+import { allLanguages } from '../hooks/languageCodes'
 
 const UNISWAP = 'UNISWAP'
 
@@ -14,7 +15,7 @@ const DARK_MODE = 'DARK_MODE'
 
 const LANG = 'LANG'
 
-const UPDATABLE_KEYS = [DARK_MODE, DISMISSED_PATHS, SAVED_ACCOUNTS, SAVED_PAIRS, SAVED_TOKENS]
+const UPDATABLE_KEYS = [DARK_MODE, DISMISSED_PATHS, SAVED_ACCOUNTS, SAVED_PAIRS, SAVED_TOKENS, LANG]
 
 const UPDATE_KEY = 'UPDATE_KEY'
 
@@ -52,7 +53,7 @@ function init() {
     [SAVED_TOKENS]: {},
     [SAVED_PAIRS]: {},
 
-    [LANG]: 'EN',
+    [LANG]: allLanguages[0],
   }
 
   try {
@@ -104,16 +105,13 @@ export function useDarkModeManager() {
   return [isDarkMode, toggleDarkMode]
 }
 
-export function useLanguageManager() {
-  // const [state, { updateKey }] = useLocalStorageContext()
-  // let lang = state[LANG]
-  /* const toggleDarkMode = useCallback(
-    (value) => {
-      updateKey(DARK_MODE, value === false || value === true ? value : !isDarkMode)
-    },
-    [updateKey, isDarkMode]
-  ) */
-  // return [isDarkMode, toggleDarkMode]
+export function useLanguage() {
+  const [state, { updateKey }] = useLocalStorageContext()
+  let selectedLanguage = state[LANG]
+  function setSelectedLanguage(lang) {
+    updateKey(LANG, lang)
+  }
+  return [selectedLanguage, setSelectedLanguage]
 }
 
 export function usePathDismissed(path) {

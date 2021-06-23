@@ -1,6 +1,3 @@
-import { useContext } from 'react'
-import { TranslationsContext } from './TranslationsContext'
-
 const variableRegex = /%(.*?)%/
 
 const replaceDynamicString = (foundTranslation: string, fallback: string) => {
@@ -17,22 +14,11 @@ const replaceDynamicString = (foundTranslation: string, fallback: string) => {
  * @param fallback 默认传递的语言
  * @returns 返回应该显示的语言
  */
-export const getTranslation = (translations: Array<any>, translationId: number, fallback: string) => {
-  // console.log('---------------------')
-  // console.log(translations)
-  // console.log(translationId)
-  // console.log(fallback)
-  // console.log('---------------------')
-  // 由于 translations 变量始终是个空值不才用此值来进行判断
-  // const foundTranslation = translations.find((translation) => {
-  //   return translation.data.stringId === translationId
-  // })
-  // if (foundTranslation) {
-  // console.log(translations[fallback])
-  // console.log(translations)
+export const getTranslation = (translations: Array<any>, fallback: string) => {
   if (translations === null) {
     return fallback
   }
+  // console.log(translations)
   const translatedString = translations[fallback]
   if (translatedString === undefined) {
     // console.table(fallback)
@@ -46,7 +32,7 @@ export const getTranslation = (translations: Array<any>, translationId: number, 
   }
   return translatedString
 }
-
+/* 
 export const TranslateString = (translationId: number, fallback: string) => {
   const { translations } = useContext(TranslationsContext)
   // console.log(translations)
@@ -58,3 +44,4 @@ export const TranslateString = (translationId: number, fallback: string) => {
   }
   return null
 }
+ */
