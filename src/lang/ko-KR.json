@@ -10,7 +10,6 @@
   "Volume": "거래량",
   "Top Tokens": "상위 토큰 목록",
   "See more": "더보기",
-  "Search HubDao Pairs and tokens": "허브다오 거래페어 및 토큰을 검색합니다.",
   "Name": "토큰명",
   "Symbol": "심볼",
   "Price Change": "가격 변동",
@@ -85,5 +84,8 @@
   "Search": "검색",
   "Search HubDao": "HubDao 검색하기",
   "Search pairs and tokens": "거래 페어 및 토큰 검색",
-  "Search HubDao pairs and tokens": "HubDao 거래페어 및 토큰 검색하기"
+  "Search HubDao pairs and tokens": "HubDao 거래페어 및 토큰 검색하기",
+  "Pair Stats": "거래페어 상세",
+  "Fees (24hrs)": "24시간 수수료",
+  "Fees (24H)": "24시간"
 }

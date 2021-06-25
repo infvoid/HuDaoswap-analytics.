@@ -418,7 +418,6 @@ export const Search = ({ small = false }) => {
       document.removeEventListener('click', handleClick)
     }
   })
-
   return (
     <Container small={small}>
       <Wrapper open={showMenu} shadow={true} small={small}>
@@ -430,12 +429,12 @@ export const Search = ({ small = false }) => {
             small
               ? ''
               : below410
-              ? TranslateString('Search') + '...'
+              ? `${TranslateString('Search') + '...'}`
               : below470
               ? TranslateString('Search HubDao') + '...'
               : below700
               ? TranslateString('Search pairs and tokens') + '...'
-              : TranslateString('Search HubDao pairs and tokens') + '...'
+              : `${TranslateString('Search HubDao pairs and tokens') + '...'}`
           }
           value={value}
           onChange={(e) => {

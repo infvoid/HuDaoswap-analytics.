@@ -6101,8 +6101,8 @@ hyphenate-style-name@^1.0.2:
 
 i18next@^20.3.2:
   version "20.3.2"
-  resolved "https://registry.nlark.com/i18next/download/i18next-20.3.2.tgz#5195e76b9e0848a1c198001bf6c7fc72995a55f1"
-  integrity sha1-UZXna54ISKHBmAAb9sf8cplaVfE=
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-20.3.2.tgz#5195e76b9e0848a1c198001bf6c7fc72995a55f1"
+  integrity sha512-e8CML2R9Ng2sSQOM80wb/PrM2j8mDm84o/T4Amzn9ArVyNX5/ENWxxAXkRpZdTQNDaxKImF93Wep4mAoozFrKw==
   dependencies:
     "@babel/runtime" "^7.12.0"
 
@@ -9870,8 +9870,8 @@ react-ga@^3.1.2:
 
 react-i18next@^11.11.0:
   version "11.11.0"
-  resolved "https://registry.nlark.com/react-i18next/download/react-i18next-11.11.0.tgz#2f7c6cb4f81f94d1728a02d60e4bb5216709f942"
-  integrity sha1-L3xstPgflNFyigLWDku1IWcJ+UI=
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.11.0.tgz#2f7c6cb4f81f94d1728a02d60e4bb5216709f942"
+  integrity sha512-p1jHmoyJgDFQmyubUEjrx6kCsr1izW/C8i9pOiJy+9lJqLYwNA8sElVplm0VAnop3kH68edT0/g3wB3UvAcRCQ==
   dependencies:
     "@babel/runtime" "^7.14.5"
     html-parse-stringify "^3.0.1"
