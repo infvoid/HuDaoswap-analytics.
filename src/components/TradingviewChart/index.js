@@ -8,6 +8,7 @@ import { usePrevious } from 'react-use'
 import { Play } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
+import useI18n from '../../hooks/useI18n'
 
 dayjs.extend(utc)
 
@@ -65,7 +66,6 @@ const TradingViewChart = ({
   const [darkMode] = useDarkModeManager()
   const textColor = darkMode ? 'white' : 'black'
   const previousTheme = usePrevious(darkMode)
-
   // reset the chart if them switches
   useEffect(() => {
     if (chartCreated && previousTheme !== darkMode) {
@@ -74,9 +74,10 @@ const TradingViewChart = ({
       let node = document.getElementById('test-id' + type)
       node.removeChild(tooltip)
       chartCreated.resize(0, 0)
-      setChartCreated()
+      setChartCreated() // eslint-disable-line react-hooks/exhaustive-deps
     }
   }, [chartCreated, darkMode, previousTheme, type])
+  const TranslateString = useI18n()
 
   // if no chart created yet, create one with options and add to DOM manually
   useEffect(() => {
@@ -167,7 +168,7 @@ const TradingViewChart = ({
       function setLastBarText() {
         toolTip.innerHTML =
           `<div style="font-size: 16px; margin: 4px 0px; color: ${textColor};">${title} ${
-            type === CHART_TYPES.BAR && !useWeekly ? '(24hr)' : ''
+            type === CHART_TYPES.BAR && !useWeekly ? `${TranslateString('(24hr)')}` : ''
           }</div>` +
           `<div style="font-size: 22px; margin: 4px 0px; color:${textColor}" >` +
           formattedNum(base ?? 0, true) +
@@ -227,6 +228,7 @@ const TradingViewChart = ({
     type,
     useWeekly,
     width,
+    TranslateString,
   ])
 
   // responsiveness

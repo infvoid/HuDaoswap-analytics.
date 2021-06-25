@@ -87,5 +87,7 @@
   "Search HubDao pairs and tokens": "HubDao 거래페어 및 토큰 검색하기",
   "Pair Stats": "거래페어 상세",
   "Fees (24hrs)": "24시간 수수료",
-  "Fees (24H)": "24시간"
+  "Fees (24H)": "24시간",
+  "(24hr)": "24시간",
+  "(24H)": "24시간"
 }
