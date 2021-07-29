@@ -30,7 +30,7 @@ const ContentWrapper = styled.div`
   @media screen and (max-width: 1400px) {
     grid-template-columns: 220px 1fr;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 800px) {
     display: grid;
   }
 

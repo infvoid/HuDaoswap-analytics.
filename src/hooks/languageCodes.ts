@@ -1,6 +1,6 @@
 import koKR from '../lang/ko-KR.json'
 
-export const EN = { code: 'en', language: 'English', src: null }
+export const EN = { code: 'EN', language: 'English', src: null }
 // export const AR = { code: 'ar', language: 'العربية' }
 // export const BN = { code: 'bn', language: 'বাংলা'}
 // export const ZHCN = { code: 'zh-CN', language: '简体中文' }
@@ -16,7 +16,7 @@ export const EN = { code: 'en', language: 'English', src: null }
 // export const ID = { code: 'id', language: 'Bahasa Indonesia' }
 // export const IT = { code: 'it', language: 'Italiano' }
 // export const JA = { code: 'ja', language: '日本語' }
-export const KO = { code: 'ko', language: '한국어', src: koKR }
+export const KO = { code: 'KO', language: '한국어', src: koKR }
 // export const PL = { code: 'pl', language: 'Polski' }
 // export const PTPT = { code: 'pt-PT', language: 'Português (Portugal)' }
 // export const PTBR = { code: 'pt-BR', language: 'Português (Brasil)' }

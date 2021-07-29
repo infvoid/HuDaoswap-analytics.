@@ -66,12 +66,17 @@ export default function Language({ Language, setLanguage }: ToggleProps) {
       </span> */}
       <span>{Language.language}</span>
       <Block className="Block">
-        {
-          allLanguages.map((item, index) =>
-            < BlockItem onClick={e => { setLanguage(item) }} key={index} >{item.language}</BlockItem>
-          )
-        }
+        {allLanguages.map((item, index) => (
+          <BlockItem
+            onClick={(e) => {
+              setLanguage(item)
+            }}
+            key={index}
+          >
+            {item.language}
+          </BlockItem>
+        ))}
       </Block>
-    </StyleLanguage >
+    </StyleLanguage>
   )
 }
