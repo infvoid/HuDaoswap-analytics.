@@ -36,7 +36,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
   useEffect(() => {
     setError(false)
   }, [address])
-
+  console.log(error || BAD_IMAGES[address])
   if (error || BAD_IMAGES[address]) {
     return (
       <Inline>
@@ -71,9 +71,7 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
     )
   }
 
-  const path = `/coin/${isAddress(
-    address
-  )}.png`
+  const path = `/coin/${isAddress(address)}.png`
 
   return (
     <Inline>
