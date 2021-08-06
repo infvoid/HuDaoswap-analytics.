@@ -36,7 +36,6 @@ export default function TokenLogo({ address, header = false, size = '24px', ...r
   useEffect(() => {
     setError(false)
   }, [address])
-  console.log(error || BAD_IMAGES[address])
   if (error || BAD_IMAGES[address]) {
     return (
       <Inline>
